@@ -23,7 +23,8 @@
 #define HANDLE 0x05A
 //config constants
 const uint8_t rc_blank_data[7] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-const uint8_t rc_network_config[6] =  {0x03, CMD_TO_TRANS, CMD_CONFIG,  0x03, 0x01, 0x00}; //keeps last config and state
+//const uint8_t rc_network_config[6] =  {0x03, CMD_TO_TRANS, CMD_CONFIG,  0x03, 0x01, 0x00}; //keeps last config and state
+const uint8_t rc_network_config[6] =  {0x03, CMD_TO_TRANS, CMD_CONFIG,  0x03, 0x01, 0x03}; //resets last config and state
 const uint8_t rc_endpoint[6]    =     {0x03, CMD_TO_TRANS, CMD_CONFIG,  CMD1_NV_LOGIC_TYPE, NV_LOGIC_LEN, ENDPOINT};
 const uint8_t rc_router[6]      =     {0x03, CMD_TO_TRANS, CMD_CONFIG,  CMD1_NV_LOGIC_TYPE, NV_LOGIC_LEN, ROUTER};
 const uint8_t rc_coordinator[6]    =  {0x03, CMD_TO_TRANS, CMD_CONFIG,  CMD1_NV_LOGIC_TYPE, NV_LOGIC_LEN, COORDINATOR};

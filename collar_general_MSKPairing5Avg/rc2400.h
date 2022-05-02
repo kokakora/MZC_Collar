@@ -38,8 +38,8 @@
 #define CMD0_PANID        0x00
 #define CMD1_PANID        0x83
 #define PANID_LEN         0x02
-#define PANID_DFLT0       0xFF
-#define PANID_DFLT1       0xFF
+#define PANID_DFLT0       0xAA //0xFF
+#define PANID_DFLT1       0x55 //0xFF
 
 #define CMD0_CHANLIST       0x00
 #define CMD1_CHANLIST       0x84

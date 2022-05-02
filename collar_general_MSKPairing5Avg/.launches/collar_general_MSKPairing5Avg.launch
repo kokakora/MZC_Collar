@@ -5,7 +5,7 @@
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROGRAM.MSP430FR2355.ccxml.TI MSP430 USB1_0/MSP430" value="${build_artifact:collar_general_MSKPairing5Avg}"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.MSP430FR2355.ccxml.TI MSP430 USB1_0/MSP430" value="collar_general_MSKPairing5Avg"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="${target_config_active_default:collar_general_MSKPairing5Avg}"/>
-<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.MSP430FR2355.ccxml.TI MSP430 USB1_0/MSP430" value="C:\Users\rugby\Downloads\collar_general_MSKPairing5Avg-20220407T024155Z-001\collar_general_MSKPairing5Avg\Debug\collar_general_MSKPairing5Avg.out"/>
+<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.MSP430FR2355.ccxml.TI MSP430 USB1_0/MSP430" value="C:\Users\rugby\OneDrive\Documents\GitHub\MZC_Collar\collar_general_MSKPairing5Avg\Debug\collar_general_MSKPairing5Avg.out"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/collar_general_MSKPairing5Avg"/>
 </listAttribute>
