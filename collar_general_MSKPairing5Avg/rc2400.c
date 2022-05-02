@@ -80,7 +80,7 @@ const uint8_t rc_receive_data[] = {0x08, CMD_FROM_TRANS, RCV_DATA_PCK, 0x00, 0x0
 
 
 const uint8_t rc_test_mode[11] = {0x08, CMD_SETPNT, 0x09, 0x07, 0x0F, 0x00, 0x04, MODE, FREQ_2405,
-                                dBm20,0};
+                                  dBm3,0};
 const uint8_t rc_reset[4] = {0x01, 0x41, 0x00, 0x00};
 
 const uint8_t network_created_response[] = {0x01, 0x45, 0xC0, 0x09};
@@ -183,9 +183,20 @@ void areq_handler(void)
             break;
         }
         }
-        if((values[2] == RCV_DATA_PCK))//recieve data packet
+        if((values[2] == RCV_DATA_PCK))//receive data packet
         {
-            play_2kHz_pulse(200);
+            if((values[3] == COL1PING1) || (values[3] == COL2PING1))
+            {
+#ifdef TRANSMITTER_CODE
+                collar_zone1 = 1;
+#else
+                collar_zone = 1;
+#endif
+            }
+            else if ((values[3] == COL1SET1) || (values[3] == COL2SET1))
+            {
+                zone = 1;
+            }
         }
     }
     GPIO_clearInterrupt(GPIO_PORT_P3, GPIO_PIN6);
@@ -265,8 +276,8 @@ void rc2400_zone1()
     GPIO_setOutputLowOnPin(GPIO_PORT_P3, GPIO_PIN5); // RF SWitch 1 V1
     GPIO_setOutputHighOnPin(GPIO_PORT_P6, GPIO_PIN0); // RF SWitch 2 V2
     GPIO_setOutputLowOnPin(GPIO_PORT_P6, GPIO_PIN1); // RF SWitch 1 V1
-    rc2400_set_output_power(dBm11);
-    __delay_cycles(1000000);
+    rc2400_set_output_power(dBmn18);
+    __delay_cycles(10000);
 }
 void rc2400_zone2()
 {
@@ -274,7 +285,8 @@ void rc2400_zone2()
     GPIO_setOutputHighOnPin(GPIO_PORT_P3, GPIO_PIN5); // RF SWitch 1 V1
     GPIO_setOutputHighOnPin(GPIO_PORT_P6, GPIO_PIN0); // RF SWitch 2 V2
     GPIO_setOutputHighOnPin(GPIO_PORT_P6, GPIO_PIN1); // RF SWitch 1 V1
-    rc2400_set_output_power(dBm11);
+    rc2400_set_output_power(dBmn10);
+    __delay_cycles(10000);
 }
 void rc2400_zone3()
 {
@@ -282,8 +294,8 @@ void rc2400_zone3()
     GPIO_setOutputHighOnPin(GPIO_PORT_P3, GPIO_PIN5); // RF SWitch 1 V1
     GPIO_setOutputHighOnPin(GPIO_PORT_P6, GPIO_PIN0); // RF SWitch 2 V2
     GPIO_setOutputHighOnPin(GPIO_PORT_P6, GPIO_PIN1); // RF SWitch 1 V1
-    rc2400_set_output_power(dBm3);
-    __delay_cycles(1000000);
+    rc2400_set_output_power(dBmn2);
+    __delay_cycles(10000);
 }
 void rc2400_zone4()
 {
@@ -291,8 +303,8 @@ void rc2400_zone4()
     GPIO_setOutputHighOnPin(GPIO_PORT_P3, GPIO_PIN5); // RF SWitch 1 V1
     GPIO_setOutputLowOnPin(GPIO_PORT_P6, GPIO_PIN0); // RF SWitch 2 V2
     GPIO_setOutputHighOnPin(GPIO_PORT_P6, GPIO_PIN1); // RF SWitch 1 V1
-    rc2400_set_output_power(dBm11);
-    __delay_cycles(1000000);
+    rc2400_set_output_power(dBmn10);
+    __delay_cycles(10000);
 }
 void rc2400_sendData(uint8_t dest, uint8_t cmd, uint8_t handle, uint8_t datalen, uint8_t * data)
 {
@@ -478,7 +490,7 @@ void rc2400_config()
     __delay_cycles(480);
     if(status == 0)
     {
-        rc2400_set_output_power(dBm20);  //set output power high initially
+        rc2400_set_output_power(dBm3);  //set output power high initially
     }
 #endif
 
